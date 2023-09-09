@@ -1,0 +1,25 @@
+* {
+    border: 2px solid red;
+}
+
+h1 {
+    color: blue;
+    font: 32px;
+    font-family: 'Times New Roman', Times, serif;
+    text-align: center;
+}
+
+#mathDiv {
+    border: 400px;
+    margin-bottom: 100px;
+    padding: 10px;
+}
+
+
+.number-button {
+            width: 50px; /* Set the desired width */
+            height: 40px; /* Set the desired height */
+            font-size: 18px; /* Adjust font size if needed */
+            background-color: white;
+            color: purple;
+        }

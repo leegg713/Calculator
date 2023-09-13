@@ -32,8 +32,17 @@ button{
     grid-template-columns: repeat(3, 1fr);
     gap: 2px;
 
+    
 }
-
+#calculator-display {
+    background-color: black;
+    color: #fff;
+    font-size: 36px;
+    text-align: left;
+    padding: 10px;
+    border-radius: 5px;
+    margin-bottom: 10px;
+}
 
 .number-button {
     /* width will adjust how close buttons are */

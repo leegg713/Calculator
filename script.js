@@ -1,81 +1,160 @@
 const mathDiv = document.getElementById("mathDiv");
 
-        // Create button elements for math buttons
-        const addition = document.createElement("button");
-        addition.textContent = "+";
-        addition.style.backgroundColor = 'green';
-        addition.addEventListener("click", () => {
-            //Will have to change the alert to do the addition
-            alert("Addition clicked");
-        });
+// Variables to store calculator operation parts
+let firstNumber = "";
+let operator = "";
+let secondNumber = "";
+// Create button elements for math buttons
+const addition = document.createElement("button");
+addition.textContent = "+";
+addition.style.backgroundColor = 'green';
+addition.addEventListener("click", () => {
+    handleOperatorClick("+");
+});
 
-        const subtraction = document.createElement("button");
-        subtraction.textContent = "-";
-        subtraction.style.backgroundColor = 'purple';
-        subtraction.addEventListener("click", () => {
-                   //Will have to change the alert to do the subtraction
-            alert("Subtraction clicked");
-        });
+const subtraction = document.createElement("button");
+subtraction.textContent = "-";
+subtraction.style.backgroundColor = 'purple';
+subtraction.addEventListener("click", () => {
+    handleOperatorClick("-");
+});
+const multiplication = document.createElement("button");
+multiplication.textContent = "*";
+multiplication.style.backgroundColor = 'blue';
+multiplication.addEventListener("click", () => {
+    handleOperatorClick("-");
+});
 
-        const multiplication = document.createElement("button");
-        multiplication.textContent = "*";
-        multiplication.style.backgroundColor = 'blue';
-        multiplication.addEventListener("click", () => {
-                   //Will have to change the alert to do the multiplication
-            alert("Mutliplication clicked");
-        });
+const division = document.createElement("button");
+division.textContent = "/";
+division.style.backgroundColor = 'yellow';
+division.addEventListener("click", () => {
+    handleOperatorClick("-");
+});
 
-        const division = document.createElement("button");
-        division.textContent = "/";
-        division.style.backgroundColor = 'yellow';
-        division.addEventListener("click", () => {
-                   //Will have to change the alert to do the division
-            alert("Division clicked");
-        });
+const clear = document.createElement("button");
+clear.textContent = "Clear";
+clear.style.backgroundColor = 'orange';
+clear.addEventListener("click", () => {
+    clearCalculator();
+});
 
-        const clear = document.createElement("button");
-        clear.textContent = "Clear";
-        clear.style.backgroundColor = 'orange';
-        clear.addEventListener("click", () => {
-            //Will have to change the alert to do the clear
-            alert("Clear clicked");
-        });
 
-        const equal = document.createElement("button");
-        equal.textContent = "=";
-        equal.style.backgroundColor = 'red';
-        equal.addEventListener("click", () => {
-            //Will have to change the alert to do the clear
-            alert("Equals clicked");
-        });
-        //Adds the buttons to the div
-        mathDiv.appendChild(addition);
-        mathDiv.appendChild(subtraction);
-        mathDiv.appendChild(multiplication);
-        mathDiv.appendChild(division);
-        mathDiv.appendChild(clear);
-        mathDiv.appendChild(equal);
+const equal = document.createElement("button");
+equal.textContent = "=";
+equal.style.backgroundColor = 'red';
+equal.addEventListener("click", () => {
+    calculateResult();
+});
+//Adds the buttons to the div
+mathDiv.appendChild(addition);
+mathDiv.appendChild(subtraction);
+mathDiv.appendChild(multiplication);
+mathDiv.appendChild(division);
+mathDiv.appendChild(clear);
+mathDiv.appendChild(equal);
 
-        //Numbers Div
 
-        const numberDiv = document.getElementById("numberDiv");
 
-        // Create number buttons with the "number-button" class
-        const buttons = [
-            "1", "2", "3", "4", "5", "6", "7", "8", "9", "0","."
-        ];
+// Function to handle operator button clicks
+function handleOperatorClick(selectedOperator) {
+    if (firstNumber === "") {
+        alert("Enter a number first.");
+        return;
+    }
 
-        buttons.forEach(number => {
-            const button = document.createElement("button");
-            button.textContent = number;
-            button.classList.add("number-button"); // Add the "number-button" class
-            button.addEventListener("click", () => {
-                // Handle button click (you can replace the alert here)
-                alert(number + " clicked");
-            });
-            numberDiv.appendChild(button);
-        });
+    if (operator !== "") {
+        alert("You can only perform one operation at a time.");
+        return;
+    }
 
+    operator = selectedOperator;
+    updateDisplay();
+}
+
+function clearCalculator() {
+    firstNumber = "";
+    operator = "";
+    secondNumber = "";
+    updateDisplay();
+}
+
+// Function to calculate and display the result
+function calculateResult() {
+    if (firstNumber === "" || operator === "" || secondNumber === "") {
+        alert("Enter a complete operation.");
+        return;
+    }
+
+    const num1 = parseFloat(firstNumber);
+    const num2 = parseFloat(secondNumber);
+
+    let result;
+    switch (operator) {
+        case "+":
+            result = num1 + num2;
+            break;
+        case "-":
+            result = num1 - num2;
+            break;
+        case "*":
+            result = num1 * num2;
+            break;
+        case "/":
+            if (num2 === 0) {
+                alert("Division by zero is not allowed.");
+                clearCalculator();
+                return;
+            }
+            result = num1 / num2;
+            break;
+        default:
+            alert("Invalid operator.");
+            clearCalculator();
+            return;
+    }
+
+    firstNumber = result.toString();
+    operator = "";
+    secondNumber = "";
+    updateDisplay();
+}
+
+function updateDisplay() {
+    const display = document.getElementById("calculator-display");
+    display.textContent = firstNumber + operator + secondNumber;
+}
+
+
+//Numbers Div
+
+const numberDiv = document.getElementById("numberDiv");
+
+// Create number buttons with the "number-button" class
+const buttons = [
+    "1", "2", "3", "4", "5", "6", "7", "8", "9", "0", "."
+];
+
+buttons.forEach(number => {
+    const button = document.createElement("button");
+    button.textContent = number;
+    button.classList.add("number-button"); // Add the "number-button" class
+    button.addEventListener("click", () => {
+        handleNumberClick(number);
+    });
+    numberDiv.appendChild(button);
+});
+// Function to handle number button clicks
+function handleNumberClick(clickedNumber) {
+    if (operator === "") {
+        firstNumber += clickedNumber;
+    } else {
+        secondNumber += clickedNumber;
+    }
+    updateDisplay();
+}
+
+updateDisplay();
 
 
 

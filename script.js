@@ -10,6 +10,13 @@ addition.textContent = "+";
 addition.style.backgroundColor = 'green';
 addition.addEventListener("click", () => {
     handleOperatorClick("+");
+    
+});
+// Add a keydown event listener to capture the "+" key press
+document.addEventListener("keydown", function (event) {
+    if (event.key === "+") {
+        handleOperatorClick("+");
+    }
 });
 
 const subtraction = document.createElement("button");
@@ -18,19 +25,40 @@ subtraction.style.backgroundColor = 'purple';
 subtraction.addEventListener("click", () => {
     handleOperatorClick("-");
 });
+// Add a keydown event listener to capture the "+" key press
+document.addEventListener("keydown", function (event) {
+    if (event.key === "-") {
+        handleOperatorClick("-");
+    }
+});
+
 const multiplication = document.createElement("button");
 multiplication.textContent = "*";
 multiplication.style.backgroundColor = 'blue';
 multiplication.addEventListener("click", () => {
-    handleOperatorClick("-");
+    handleOperatorClick("*");
 });
+// Add a keydown event listener to capture the "+" key press
+document.addEventListener("keydown", function (event) {
+    if (event.key === "*") {
+        handleOperatorClick("*");
+    }
+});
+
 
 const division = document.createElement("button");
 division.textContent = "/";
 division.style.backgroundColor = 'yellow';
 division.addEventListener("click", () => {
-    handleOperatorClick("-");
+    handleOperatorClick("/");
 });
+// Add a keydown event listener to capture the "+" key press
+document.addEventListener("keydown", function (event) {
+    if (event.key === "/") {
+        handleOperatorClick("/");
+    }
+});
+
 
 const clear = document.createElement("button");
 clear.textContent = "Clear";
@@ -46,6 +74,19 @@ equal.style.backgroundColor = 'red';
 equal.addEventListener("click", () => {
     calculateResult();
 });
+// Add a keydown event listener to capture the = key press
+document.addEventListener("keydown", function (event) {
+    if (event.key === "=") {
+        calculateResult();
+    }
+});
+
+document.addEventListener("keydown", function (event) {
+    if (event.key === "Enter") {
+        calculateResult();
+    }
+});
+
 //Adds the buttons to the div
 mathDiv.appendChild(addition);
 mathDiv.appendChild(subtraction);
@@ -142,6 +183,12 @@ buttons.forEach(number => {
     button.addEventListener("click", () => {
         handleNumberClick(number);
     });
+    document.addEventListener("keydown", (event) => {
+        if(event.key === number){
+            handleNumberClick(number);
+        }
+    });
+    
     numberDiv.appendChild(button);
 });
 // Function to handle number button clicks

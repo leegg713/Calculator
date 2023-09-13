@@ -2,7 +2,7 @@ const mathDiv = document.getElementById("mathDiv");
 
         // Create button elements for math buttons
         const addition = document.createElement("button");
-        addition.textContent = "Addition";
+        addition.textContent = "+";
         addition.style.backgroundColor = 'green';
         addition.addEventListener("click", () => {
             //Will have to change the alert to do the addition
@@ -10,7 +10,7 @@ const mathDiv = document.getElementById("mathDiv");
         });
 
         const subtraction = document.createElement("button");
-        subtraction.textContent = "Subtraction";
+        subtraction.textContent = "-";
         subtraction.style.backgroundColor = 'purple';
         subtraction.addEventListener("click", () => {
                    //Will have to change the alert to do the subtraction
@@ -18,7 +18,7 @@ const mathDiv = document.getElementById("mathDiv");
         });
 
         const multiplication = document.createElement("button");
-        multiplication.textContent = "Mutliplication";
+        multiplication.textContent = "*";
         multiplication.style.backgroundColor = 'blue';
         multiplication.addEventListener("click", () => {
                    //Will have to change the alert to do the multiplication
@@ -26,7 +26,7 @@ const mathDiv = document.getElementById("mathDiv");
         });
 
         const division = document.createElement("button");
-        division.textContent = "Division";
+        division.textContent = "/";
         division.style.backgroundColor = 'yellow';
         division.addEventListener("click", () => {
                    //Will have to change the alert to do the division
@@ -41,12 +41,20 @@ const mathDiv = document.getElementById("mathDiv");
             alert("Clear clicked");
         });
 
+        const equal = document.createElement("button");
+        equal.textContent = "=";
+        equal.style.backgroundColor = 'red';
+        equal.addEventListener("click", () => {
+            //Will have to change the alert to do the clear
+            alert("Equals clicked");
+        });
         //Adds the buttons to the div
         mathDiv.appendChild(addition);
         mathDiv.appendChild(subtraction);
         mathDiv.appendChild(multiplication);
         mathDiv.appendChild(division);
         mathDiv.appendChild(clear);
+        mathDiv.appendChild(equal);
 
         //Numbers Div
 
@@ -54,7 +62,7 @@ const mathDiv = document.getElementById("mathDiv");
 
         // Create number buttons with the "number-button" class
         const buttons = [
-            "1", "2", "3", "4", "5", "6", "7", "8", "9", "0"
+            "1", "2", "3", "4", "5", "6", "7", "8", "9", "0","."
         ];
 
         buttons.forEach(number => {

@@ -10,16 +10,39 @@ h1 {
 }
 
 #mathDiv {
+    border: 40px;
+    gap: 2px;
+    margin-bottom: 0px;
+    padding: 5px;
+}
+button{
+    /* width will adjust how close the math buttons are */
+    width: 203px;
+    /* Set the desired width */
+    height: 40px;
+    /* Set the desired height */
+    font-size: 36px;
+}
+
+#numberDiv {
     border: 400px;
     margin-bottom: 100px;
-    padding: 10px;
+    padding: 5px;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2px;
+
 }
 
 
 .number-button {
-            width: 50px; /* Set the desired width */
-            height: 40px; /* Set the desired height */
-            font-size: 18px; /* Adjust font size if needed */
-            background-color: white;
-            color: purple;
-        }
+    /* width will adjust how close buttons are */
+    width: 175px;
+    /* Set the desired width */
+    height: 40px;
+    /* Set the desired height */
+    font-size: 18px;
+    /* Adjust font size if needed */
+    background-color: white;
+    color: purple;
+}
